@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>注册</title>
+    <!-- build:css(src) static/css/base.css -->
+	<link rel="stylesheet" type="text/css" href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/bower_components/animate.css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/admin.css">
+    <!-- endbuild -->
+</head>
+<body>
+
+	<div class="fadeIn animated" id="wrapper">
+
+		<!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">刷手后台</a>
+                </div>
+                <!-- /.navbar-header -->
+            </div>
+        </nav>
+
+
+        <div class="container">
+            <form class="form-horizontal mt50" role="form" id="form">
+                <div class="form-group">
+                    <label for="mobile" class="col-sm-4 control-label">手机号：</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="mobile" name="mobile" placeholder="请输入手机号">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pwd" class="col-sm-4 control-label">密码：</label>
+                    <div class="col-sm-5">
+                       <input type="password" class="form-control" id="pwd" name="pwd" placeholder="请输入密码">
+                    </div>
+                </div>    
+                <div class="form-group">
+                    <label for="pwd" class="col-sm-4 control-label"></label>
+                    <div class="col-sm-5">
+                       <input type="password" class="form-control" id="pwd2" name="pwd2" placeholder="请再次输入密码">
+                    </div>
+                </div>                                            
+                <div class="form-group">
+                    <div class="col-sm-offset-4 col-sm-5 mt10">
+                        <button id="submit" type="submit" class="btn btn-info pull-right">提交注册</button>
+                        <a href="/login.html" class="btn btn-default">直接登录</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+	</div>
+
+    <!-- build:js(src) static/js/register-common.js -->
+    <script type="text/javascript" src="/static/bower_components/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/static/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+    <script type="text/javascript" src="/static/js/system.js"></script>	    
+
+    <script type="text/javascript" src="/static/js/md5.js"></script>
+    <script type="text/javascript" src="/static/js/register.js"></script>
+    <!-- endbuild -->
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>已领取任务列表</title>
+
+   <!-- build:css(src) /static/css/list-base.css -->
+    <link rel="stylesheet" type="text/css" href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/bower_components/animate.css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/admin.css">
+
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/bower_components/bootstrap-table/dist/bootstrap-table.css">    
+    <link rel="stylesheet" type="text/css" href="/static/bower_components/zoom.js/css/zoom.css">
+    <!-- endbuild -->    
+</head>
+<body>
+
+    <div class="main-content fadeIn animated" id="wrapper">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">已领取任务列表</h2>
+            </div>
+            <!-- /.col-lg-12 --> </div> 
+        <div class="row">
+            <div class="col-lg-12">
+                <table width="100%" class="table table-striped table-hover" id="table"
+                    data-toggle="table"
+                    data-ajax="getData"
+                    data-page-size="20"
+                    data-pagination="true"
+                    data-side-pagination="server"
+                >
+                    <thead>
+                        <tr>
+                            <th data-field="title">文章标题</th>
+                            <th data-field="link">链接</th>
+                            <th data-field="price">单条价钱</th>
+                            <th data-field="initReadCount">初始阅读量</th>
+                            <th data-field="endReadCount">任务阅读量</th>
+                            <th data-field="createTime">创建时间</th>
+                            <th data-formatter="statusFormatter">任务状态</th>
+                        <!-- <th data-formatter="operateFormatter" class="operate-th" data-align="center">操作</th> -->
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<!-- build:js(src) /static/js/list-common.js -->
+<script type="text/javascript" src="/static/js/page.js"></script>
+<script type="text/javascript" src="/static/bower_components/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/bower_components/bootbox.js/bootbox.js"></script>
+<script type="text/javascript" src="/static/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+<script type="text/javascript" src="/static/js/system.js"></script>
+<script type="text/javascript" src="/static/bower_components/zoom.js/js/zoom.js"></script>
+<!-- endbuild -->
+
+<!-- build:js(src) /static/js/recive-job-list.js -->
+<script type="text/javascript" src="/static/js/pages/recive-job-list.js"></script>
+<script type="text/javascript" src="/static/bower_components/bootstrap-table/dist/bootstrap-table.js"></script>
+<script type="text/javascript" src="/static/bower_components/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
+<!-- endbuild -->
+</body>
+</html>

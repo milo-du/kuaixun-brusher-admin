@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>管理员后台</title>
+    <!-- build:css(src) static/css/base.css -->
+    <link rel="stylesheet" type="text/css" href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/bower_components/animate.css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/admin.css">
+    <!-- endbuild -->
+    <style>
+        /*#side-menu [data-id],#side-menu [data-sub-id]{display: none;}*/
+    </style>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lte IE 9]>
+    <script type="text/javascript">window.location.href='/supports.html';</script>
+    <![endif]-->
+</head>
+<body class="main-body">
+    <div class="fadeIn animated blur" id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">管理员后台</a>
+            </div>
+            <!-- /.navbar-header -->
+            <ul class="nav navbar-top-links navbar-right" id="userInfo" style="display: block;">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" href="javascript:;">
+                        欢迎您， <i class="fa fa-user fa-fw"></i>
+                        <span node-type="nick"></span>
+                    </a>
+                    <!-- /.dropdown-user --> </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" id="logout" href="#"> <i class="fa fa-power-off fa-fw"></i>
+                        退出
+                    </a>
+                    <!-- /.dropdown-user --> </li>
+                <!-- /.dropdown --> </ul>
+            <div class="navbar-default sidebar" role="navigation">
+                <!-- 统计分析 -->
+                <div class="sidebar-nav navbar-collapse" id="menuList">
+                    <ul class="nav" data-tab="chart" style="display: block;">
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-file-word-o fa-fw"></i>
+                                任务
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level collapse">
+                                <li class="slideInDown animated">
+                                    <a target="content" href="/pages/brusher-job-list.html">刷手任务列表</a>
+                                </li>       
+                                <li class="slideInDown animated">
+                                    <a target="content" href="/pages/recive-job-list.html">已领取任务列表</a>
+                                </li>                                                 
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-user fa-fw"></i>
+                                用户
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level collapse">
+                                <li class="slideInDown animated">
+                                    <a target="content" href="/pages/publisher-user-list.html">代理用户</a>
+                                </li>   
+                                <li class="slideInDown animated">
+                                    <a target="content" href="/pages/brusher-user-list.html">刷手用户</a>
+                                </li>      
+                                <li class="slideInDown animated">
+                                    <a target="content" href="/pages/admin-user-list.html">管理员用户</a>
+                                </li>                 
+                            </ul>
+                        </li>                         
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div id="page-wrapper">
+        <iframe id="page-content" name="content" src="/pages/brusher-job-list.html" frameborder="0"></iframe>
+    </div>
+    <!-- build:js(src) static/js/common.js -->
+    <script type="text/javascript" src="/static/bower_components/jquery/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/bower_components/bootbox.js/bootbox.js"></script>
+    <script type="text/javascript" src="/static/js/system.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/js/admin.js" charset="utf-8"></script>
+    <!-- endbuild -->
+</body>
+</html>

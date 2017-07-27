@@ -1,1 +1,1 @@
-# kuaixun-brusher-admin
+# kuaixun-admin
