@@ -6,49 +6,18 @@ $(function() {
 
 	var data = {
 		id: System.getParam('id') || 0,
-		filters: {
-			picture: [{
-				title: "jpg files",
-				extensions: "jpg"
-			}, {
-				title: "jpg files",
-				extensions: "jpeg"
-			}, {
-				title: "jpg files",
-				extensions: "png"
-			}]
-		},
-		formData: {
-			cover: '',
-			tags: []
-		},
+		formData: {}
 	};
 	var page = {
 		init: function() {
-			if (data.id) {
-				$('#title').html('修改任务');
-				this.getData(data.id).done(function(response) {
-					if (response.res == 0) {
-						data.formData = $.extend(data.formData, response.data[0]);
-						data.formData.tags = data.formData.tags.split('|');
-						data.formData.content = decodeURIComponent(data.formData.content);
-						nodes.form.html(System.template('appTpl', {
-							info: data.formData,
-							tagList: data.tagList
-						}));
-						page.bindEvents();
-					}
-				});
-			} else {
-				nodes.form.html(System.template('appTpl', {
-					info: {
-						tags: []
-					},
-					tagList: data.tagList
-				}));
-				this.bindEvents();
-				$('#title').html('发布任务');
-			}
+			this.getData().done(function(response) {
+				if (response.ret == 0) {
+					nodes.form.html(System.template('appTpl', {
+						info: data.formData
+					}));
+					page.bindEvents();
+				}
+			});
 		},
 		initNodes: function() {
 			$.extend(nodes, {
@@ -134,49 +103,32 @@ $(function() {
 		handleSubmit: function(event) {
 			event.preventDefault();
 			var formData = nodes.form.serializeObject();
-			if ($.trim(formData.title).length == 0) {
+			if ($.trim(formData.alipayPhone).length == 0) {
 				$.toast({
 					icon: 'error',
-					text: '请输入标题'
-				});
-				return;
-			}						
-			if ($.trim(formData.link).length == 0) {
-				$.toast({
-					icon: 'error',
-					text: '请输入链接'
+					text: '请输入支付宝手机号'
 				});
 				return;
 			}
-			if ($.trim(formData.initReadCount).length == 0) {
+			if ($.trim(formData.alipayName).length == 0) {
 				$.toast({
 					icon: 'error',
-					text: '请输入初始阅读量'
+					text: '请输入支付宝姓名'
 				});
 				return;
 			}
-			if ($.trim(formData.endReadCount).length == 0) {
-				$.toast({
-					icon: 'error',
-					text: '请输入endReadCount'
-				});
-				return;
-			}			
 			nodes.submit.prop('disabled', true);
 			return System.request({
 					type: 'POST',
-					url: 'publisher_job/publish',
+					url: 'brusher_user/set_pay_acount',
 					data: formData
 				})
 				.done(function(response) {
 					if (response.ret == 0) {
 						$.toast({
 							icon: 'success',
-							text: !formData.id ? '恭喜您发布成功' : '恭喜您修改成功'
+							text: '设置成功'
 						});
-						setTimeout(function() {
-							System.redirect('/pages/job-list.html');
-						}, 800);
 					} else {
 						$.toast({
 							icon: 'error',
@@ -223,20 +175,22 @@ $(function() {
 				page.initImgCropper();
 			}
 		},
-		getData: function(id) {
+		getData: function() {
 			return System.request({
 					type: 'get',
-					url: 'manage/get_article',
+					url: 'brusher_user/get_pay_acount',
 					data: {
-						id: id
+
 					}
 				})
 				.done(function(response) {
-					if (response.res != 0) {
+					if (response.ret != 0) {
 						$.toast({
 							icon: 'error',
 							text: response.msg
 						});
+					} else {
+						data.formData = response.data[0];
 					}
 				})
 				.fail(function() {

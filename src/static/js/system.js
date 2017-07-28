@@ -192,7 +192,12 @@
 			xhrFields: {
 				withCredentials: true
 			}
-		}, options));
+		}, options)).done(function(response) {			
+			if (response.ret == 2001) {;
+				location.href = 'login.html';
+			}
+
+		});
 	};
 
 	System.getParam = function(n, t) {

@@ -4,7 +4,7 @@ $(function() {
         System.request({
                 type: 'GET',
                 async: true,
-                url: 'publisher_user/get_user'
+                url: 'brusher_user/get_user'
             })
             .done(function(response) {
                 if (response.ret == 0) {

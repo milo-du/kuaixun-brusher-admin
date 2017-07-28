@@ -32,7 +32,7 @@ $(function() {
 		},
 		handleAction: function(event) {
 			event.preventDefault();
-			var self = $(this);			
+			var self = $(this);
 			action = self.attr('data-action');
 
 			switch (action) {
@@ -51,7 +51,7 @@ $(function() {
 					}
 				})
 				.done(function(response) {
-					if (response.res == 0) {
+					if (response.ret == 0) {
 						$.toast({
 							icon: 'success',
 							text: '领取成功'
@@ -96,16 +96,18 @@ $(function() {
 		},
 		operateFormatter: function(value, row, index) {
 			var tpl = ['<div class="btn-group btn-group-xs opr-btn">'];
-			tpl.push('<button data-action="recive" data-id="' + row.ID + '" class="btn btn-sm btn-success" type="button">领取</button>');
+			if (row.reciveStatu == "0") {
+				tpl.push('<button data-action="recive" data-id="' + row.ID + '" class="btn btn-sm btn-success" type="button">领取</button>');
+			}
 			tpl.push('</div>');
 
 			return tpl.join('');
 		},
 		statusFormatter: function(value, row, index) {
-			if (row.brusherID == "0") {
-				return '待完成';
+			if (row.reciveStatu == "0") {
+				return '您未领取';
 			} else {
-				return '刷手进行中';
+				return '您已领取';
 			}
 		},
 		timeFormatter: function(value, row, index) {
