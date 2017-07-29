@@ -36,29 +36,25 @@ $(function() {
 			action = self.attr('data-action');
 
 			switch (action) {
-				case 'delete':
-					bootbox.confirm("确认删除?", function(result) {
-						if (result) {
-							page.handleDelete(self, action);
-						}
-					});
+				case 'withdrawals':
+					page.handleWithdrawals(self, action);
 					break;
 			}
 		},
-		handleDelete: function(self, type) {
+		handleWithdrawals: function(self, type) {
 			var id = self.attr('data-id');
 			return System.request({
-					type: 'get',
-					url: 'manage/delete_article',
+					type: 'POST',
+					url: 'brusher_job/applyMoney',
 					data: {
 						id: id
 					}
 				})
 				.done(function(response) {
-					if (response.res == 0) {
+					if (response.ret == 0) {
 						$.toast({
 							icon: 'success',
-							text: '删除成功'
+							text: '申请提现成功，请等待管理员打款'
 						});
 						nodes.table.bootstrapTable('refresh');
 					} else {
@@ -99,27 +95,37 @@ $(function() {
 				})
 		},
 		operateFormatter: function(value, row, index) {
-			return [
-				'<a href="/pages/article-edit.html?id=' + row.id + '">编辑</a>',
-				'<a href="javascript:void(0)" data-action="delete" data-id="' + row.id + '">删除</a>'
-			].join('&nbsp;');
-		},
-		statusFormatter:function(value, row, index){
-			if(row.brusherID=="0")
-			{
-				return '待完成';
+			var tpl = ['<div class="btn-group btn-group-xs opr-btn">'];
+			if (row.done == "1" && row.state == "0") {
+				tpl.push('<button data-action="withdrawals" data-id="' + row.id + '" class="btn btn-sm btn-success" type="button">申请提现</button>');
+			} else {
+				tpl.push('-');
 			}
-			else{
-				return '刷手进行中';
+			tpl.push('</div>');
+			return tpl.join('');
+		},
+		statusFormatter: function(value, row, index) {
+			if (row.done == "0") {
+				return '未完成';
+			} else {
+				return '已完成';
+			}
+		},
+		withdrawalsStatusFormatter: function(value, row, index) {
+			if (row.state == "0") {
+				return '未申请提现';
+			} else {
+				return '已申请提现';
 			}
 		},
 		timeFormatter: function(value, row, index) {
 			return new Date(row.create_time * 1000).format('Y年M月d日 H:m:s');
-		},
+		}
 	};
 
 	page.init();
 	window.getData = page.getData;
 	window.operateFormatter = page.operateFormatter;
 	window.statusFormatter = page.statusFormatter;
+	window.withdrawalsStatusFormatter = page.withdrawalsStatusFormatter;
 });

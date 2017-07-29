@@ -96,7 +96,7 @@ $(function() {
 		},
 		operateFormatter: function(value, row, index) {
 			var tpl = ['<div class="btn-group btn-group-xs opr-btn">'];
-			if (row.reciveStatu == "0") {
+			if (row.reciveState == "0") {
 				tpl.push('<button data-action="recive" data-id="' + row.ID + '" class="btn btn-sm btn-success" type="button">领取</button>');
 			}
 			tpl.push('</div>');
@@ -104,7 +104,7 @@ $(function() {
 			return tpl.join('');
 		},
 		statusFormatter: function(value, row, index) {
-			if (row.reciveStatu == "0") {
+			if (row.reciveState == "0") {
 				return '您未领取';
 			} else {
 				return '您已领取';
