@@ -91,7 +91,7 @@ $(function() {
 		getData: function(params) {
 			return System.request({
 					type: 'GET',
-					url: 'admin/get_brusher_user_list',
+					url: 'brusher_user/get_apply_money_list',
 					data: $.extend(data.filter, {
 						begin: params.data.offset,
 						limit: params.data.limit
@@ -101,7 +101,7 @@ $(function() {
 					if (response.ret == 0) {
 						var list = {
 							rows: response.data,
-							total: response.data
+							total: response.total
 						};
 
 						params.success(list);
@@ -122,10 +122,11 @@ $(function() {
 			][row.is_admin];
 		},
 		statusFormatter: function(value, row, index) {
-			return [
-				'<span class="label label-success">可用</span>',
-				'<span class="label label-danger">禁用</span>'
-			][row.status];
+			if (row.statu == "0") {
+				return '等待管理员打款';
+			} else {
+				return '管理员已打款';
+			}
 		},
 		operateFormatter: function(value, row, index) {
 			return [
@@ -148,5 +149,5 @@ $(function() {
 	window.managerFormatter = page.managerFormatter;
 	window.timeFormatter = page.timeFormatter;
 	window.operateFormatter = page.operateFormatter;
-	window.photoFormatter = page.photoFormatter;
+	window.statusFormatter = page.statusFormatter;
 });
