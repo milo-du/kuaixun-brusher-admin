@@ -106,7 +106,7 @@ $(function() {
 
 						params.success(list);
 						data.filter.keyWord = null;
-						data.list = response.data;
+						data.list = resp onse.data;
 					} else {
 						$.toast({
 							icon: 'error',
