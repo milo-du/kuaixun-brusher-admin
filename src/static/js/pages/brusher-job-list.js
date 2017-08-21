@@ -14,7 +14,8 @@ $(function() {
 			$.extend(nodes, {
 				wrapper: $('#wrapper'),
 				table: $('#table'),
-				search: $("#search")
+				search: $("#search"),
+				url: $("#url")
 			});
 		},
 		initData: function() {
@@ -25,6 +26,8 @@ $(function() {
 					limit: 10
 				}
 			});
+			var userInfo = System.localStorage.get('auth', true);
+			nodes.url.val('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxcc878ae8bfac523f&redirect_uri=http%3a%2f%2fapi2.runningdreamer.com%2fbrusher_auth&response_type=code&scope=snsapi_base&state=%s#wechat_redirect'.printf(userInfo.uid));
 		},
 		bindEvent: function() {
 			nodes.table.on('click', '[data-action]', this.handleAction);

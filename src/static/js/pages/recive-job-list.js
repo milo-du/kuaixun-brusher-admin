@@ -45,7 +45,7 @@ $(function() {
 			var id = self.attr('data-id');
 			return System.request({
 					type: 'POST',
-					url: 'brusher_job/applyMoney',
+					url: 'brusher_job/apply_money',
 					data: {
 						id: id
 					}

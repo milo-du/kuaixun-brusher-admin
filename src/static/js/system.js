@@ -192,7 +192,7 @@
 			xhrFields: {
 				withCredentials: true
 			}
-		}, options)).done(function(response) {			
+		}, options)).done(function(response) {
 			if (response.ret == 2001) {;
 				location.href = 'login.html';
 			}
